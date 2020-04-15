@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS passes;
+DROP TABLE IF EXISTS bids;
+DROP TABLE IF EXISTS issued;
+
+DROP TABLE IF EXISTS passes_people;
+DROP TABLE IF EXISTS bids_people;
+DROP TABLE IF EXISTS issued_people;
+
+DROP TABLE IF EXISTS companies_people;
+
+DROP TABLE IF EXISTS files;
+
+DROP TABLE IF EXISTS districts;
+DROP TABLE IF EXISTS branches;
+DROP TABLE IF EXISTS users;
