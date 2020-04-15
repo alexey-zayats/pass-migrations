@@ -5,18 +5,22 @@
 $ ./migrate.sh create -dir ./migrations -ext sql migation-name
 ```
 
-Запуск с использованием локального скрипта
+Запуск в разработке
 ```bash
 $ ./migrate.sh up
 ```
 
-Запуск migrate
+Установку и использование оригинального `migrate` смотрим тут
+https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
+
+
+Накатить миграции
 ```bash
-$ migrate -path ./migrations -database mysql://pass:pass@tcp(localhost:3306)/pass?charset=utf8 up
+$ docker run --network host dockereg.athletic.cloud/pass-migrations -database 'mysql://pass:pass@tcp(192.168.1.36:3306)/pass?charset=utf8' up
+-all
 ```
 
-Запуск из Docker-a
+Откатить миграции
 ```bash
-$ docker run -v ./migrations:/migrations --network host migrate/migrate
-    -path=/migrations/ -database mysql://pass:pass@tcp(localhost:3306)/pass?charset=utf8 up 2
+$ docker run --network host dockereg.athletic.cloud/pass-migrations -database 'mysql://pass:pass@tcp(192.168.1.36:3306)/pass?charset=utf8' down -all
 ```
