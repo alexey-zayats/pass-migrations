@@ -23,12 +23,25 @@ ALTER TABLE files ADD KEY idx_files_status (status);
 
 
 -- транспортные пропуска
+-- companies
+ALTER TABLE companies ADD PRIMARY KEY (id);
+ALTER TABLE companies MODIFY COLUMN id INT AUTO_INCREMENT;
+ALTER TABLE companies ADD UNIQUE KEY idx_companies_company (inn,ogrn);
+ALTER TABLE companies ADD KEY idx_companies_status (status);
+ALTER TABLE companies ADD KEY idx_companies__name (name(50));
 
 -- bids
 ALTER TABLE bids ADD PRIMARY KEY (id);
 ALTER TABLE bids MODIFY COLUMN id INT AUTO_INCREMENT;
-ALTER TABLE bids ADD KEY idx_bids_wstatus (workflow_status);
+ALTER TABLE bids ADD KEY idx_bids_workflow_status (workflow_status);
 ALTER TABLE bids ADD KEY idx_bids_company (company_id);
+ALTER TABLE bids ADD KEY idx_bids_user (user_id);
+ALTER TABLE bids ADD KEY idx_bids_move (moved_to);
+ALTER TABLE bids ADD KEY idx_bids_alighned (alighned_id);
+ALTER TABLE bids ADD KEY idx_bids_print (print_id);
+ALTER TABLE bids ADD KEY idx_bids_district (district_id);
+ALTER TABLE bids ADD CONSTRAINT fk_bids_company FOREIGN KEY (company_id) REFERENCES companies (id);
+
 
 -- issued
 ALTER TABLE issued ADD PRIMARY KEY (id);
@@ -43,11 +56,9 @@ ALTER TABLE issued ADD CONSTRAINT issued_created_fk FOREIGN KEY (created_by) REF
 -- passes
 ALTER TABLE passes ADD PRIMARY KEY (id);
 ALTER TABLE passes MODIFY COLUMN id INT AUTO_INCREMENT;
-ALTER TABLE passes ADD KEY idx_company_inn (company_inn);
-ALTER TABLE passes ADD KEY idx_district (district);
-ALTER TABLE passes ADD KEY idx_employee_lastname (employee_lastname);
-ALTER TABLE passes ADD KEY fk_passes_created (created_by);
-ALTER TABLE passes ADD KEY idx_passes_district (district);
+ALTER TABLE passes ADD KEY idx_passes_lastname (lastname);
+ALTER TABLE passes ADD KEY idx_passes_created (created_by);
+ALTER TABLE passes ADD KEY idx_passes_district (district_id);
 ALTER TABLE passes ADD KEY idx_passes_bid (bid_id);
 ALTER TABLE passes ADD CONSTRAINT fk_passes_created FOREIGN KEY (created_by) REFERENCES users (id);
 
@@ -64,21 +75,20 @@ ALTER TABLE companies_people ADD KEY idx_companies_people_name (name(50));
 ALTER TABLE bids_people ADD PRIMARY KEY (id);
 ALTER TABLE bids_people MODIFY COLUMN id INT AUTO_INCREMENT;
 ALTER TABLE bids_people ADD KEY idx_bids_people_company (company_id);
-ALTER TABLE bids_people ADD KEY idx_bids_people_wstatus (workflow_status);
+ALTER TABLE bids_people ADD KEY idx_bids_people_workflow_status (workflow_status);
 ALTER TABLE bids_people ADD KEY idx_bids_people_user (user_id);
 ALTER TABLE bids_people ADD KEY idx_bids_people_move (moved_to);
 ALTER TABLE bids_people ADD KEY idx_bids_people_alighned (alighned_id);
 ALTER TABLE bids_people ADD KEY idx_bids_people_print (print_id);
-ALTER TABLE bids_people ADD KEY idx_bids_people_dist (district);
+ALTER TABLE bids_people ADD KEY idx_bids_people_dist (district_id);
 ALTER TABLE bids_people ADD CONSTRAINT fk_bids_people_company FOREIGN KEY (company_id) REFERENCES companies_people (id);
 
 -- issued_people
 ALTER TABLE issued_people ADD PRIMARY KEY (id);
 ALTER TABLE issued_people MODIFY COLUMN id INT AUTO_INCREMENT;
-ALTER TABLE issued_people ADD KEY idx_issued_people_company (district);
 ALTER TABLE issued_people ADD KEY idx_issued_people_number (pass_number);
 ALTER TABLE issued_people ADD KEY idx_issued_people_arm_number (arm_number);
-ALTER TABLE issued_people ADD KEY fk_issued_people_company (company_id);
+ALTER TABLE issued_people ADD KEY idx_issued_people_company (company_id);
 ALTER TABLE issued_people ADD CONSTRAINT fk_issued_people_company FOREIGN KEY (company_id) REFERENCES companies_people (id);
 
 -- passes_people

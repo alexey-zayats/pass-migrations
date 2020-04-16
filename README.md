@@ -1,5 +1,8 @@
 # Миграции
 
+Установку и использование оригинального `migrate` смотрим тут
+https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
+
 Создать миграцию
 ```bash
 $ ./migrate.sh create -dir ./migrations -ext sql migation-name
@@ -9,10 +12,6 @@ $ ./migrate.sh create -dir ./migrations -ext sql migation-name
 ```bash
 $ ./migrate.sh up
 ```
-
-Установку и использование оригинального `migrate` смотрим тут
-https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
-
 
 Накатить миграции
 ```bash

@@ -3,18 +3,22 @@
 
 -- passes
 ALTER TABLE passes DROP FOREIGN KEY fk_passes_created;
-ALTER TABLE passes DROP KEY idx_company_inn;
-ALTER TABLE passes DROP KEY idx_district;
-ALTER TABLE passes DROP KEY idx_employee_lastname;
-ALTER TABLE passes DROP KEY fk_passes_created;
 ALTER TABLE passes DROP KEY idx_passes_district;
+ALTER TABLE passes DROP KEY idx_passes_lastname;
+ALTER TABLE passes DROP KEY idx_passes_created;
 ALTER TABLE passes DROP KEY idx_passes_bid;
 ALTER TABLE passes MODIFY COLUMN id INT;
 ALTER TABLE passes DROP PRIMARY KEY;
 
 -- bids
-ALTER TABLE bids DROP KEY idx_bids_wstatus;
+ALTER TABLE bids DROP FOREIGN KEY fk_bids_company;
+ALTER TABLE bids DROP KEY idx_bids_workflow_status;
 ALTER TABLE bids DROP KEY idx_bids_company;
+ALTER TABLE bids DROP KEY idx_bids_user;
+ALTER TABLE bids DROP KEY idx_bids_move;
+ALTER TABLE bids DROP KEY idx_bids_alighned;
+ALTER TABLE bids DROP KEY idx_bids_print;
+ALTER TABLE bids DROP KEY idx_bids_district;
 ALTER TABLE bids MODIFY COLUMN id INT;
 ALTER TABLE bids DROP PRIMARY KEY;
 
@@ -46,7 +50,7 @@ ALTER TABLE passes_people DROP PRIMARY KEY;
 -- bids_people
 ALTER TABLE bids_people DROP FOREIGN KEY fk_bids_people_company;
 ALTER TABLE bids_people DROP KEY idx_bids_people_company;
-ALTER TABLE bids_people DROP KEY idx_bids_people_wstatus;
+ALTER TABLE bids_people DROP KEY idx_bids_people_workflow_status;
 ALTER TABLE bids_people DROP KEY idx_bids_people_user;
 ALTER TABLE bids_people DROP KEY idx_bids_people_move;
 ALTER TABLE bids_people DROP KEY idx_bids_people_alighned;
@@ -61,7 +65,6 @@ ALTER TABLE issued_people DROP FOREIGN KEY fk_issued_people_company;
 ALTER TABLE issued_people DROP KEY idx_issued_people_company;
 ALTER TABLE issued_people DROP KEY idx_issued_people_number;
 ALTER TABLE issued_people DROP KEY idx_issued_people_arm_number;
-ALTER TABLE issued_people DROP KEY fk_issued_people_company;
 ALTER TABLE issued_people MODIFY COLUMN id INT;
 ALTER TABLE issued_people DROP PRIMARY KEY;
 
