@@ -6,7 +6,7 @@ ALTER TABLE districts AUTO_INCREMENT=11;
 -- branches
 ALTER TABLE branches ADD PRIMARY KEY (id);
 ALTER TABLE branches MODIFY COLUMN id INT AUTO_INCREMENT;
-ALTER TABLE branches AUTO_INCREMENT=11;
+ALTER TABLE branches AUTO_INCREMENT=49;
 
 
 -- users
@@ -29,6 +29,7 @@ ALTER TABLE companies MODIFY COLUMN id INT AUTO_INCREMENT;
 ALTER TABLE companies ADD UNIQUE KEY idx_companies_company (inn,ogrn);
 ALTER TABLE companies ADD KEY idx_companies_status (status);
 ALTER TABLE companies ADD KEY idx_companies__name (name(50));
+ALTER TABLE companies AUTO_INCREMENT=2;
 
 -- bids
 ALTER TABLE bids ADD PRIMARY KEY (id);
@@ -70,6 +71,7 @@ ALTER TABLE companies_people MODIFY COLUMN id INT AUTO_INCREMENT;
 ALTER TABLE companies_people ADD UNIQUE KEY idx_companies_people_company (inn,ogrn);
 ALTER TABLE companies_people ADD KEY idx_companies_people_status (status);
 ALTER TABLE companies_people ADD KEY idx_companies_people_name (name(50));
+ALTER TABLE companies_people AUTO_INCREMENT=2;
 
 -- bids_people
 ALTER TABLE bids_people ADD PRIMARY KEY (id);

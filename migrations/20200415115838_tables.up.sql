@@ -31,8 +31,8 @@ CREATE TABLE files (
     id int NOT NULL,
     filepath varchar(512) NOT NULL,
     status smallint DEFAULT NULL,
-    log text DEFAULT NULL,
-    source text DEFAULT NULL,
+    log longtext DEFAULT NULL,
+    source varchar(15) DEFAULT NULL,
     created_at datetime NOT NULL
 ) ENGINE=InnoDB COMMENT 'Файлы импортов';
 
@@ -44,15 +44,15 @@ CREATE TABLE issued (
     id int NOT NULL COMMENT 'ID выданного пропуска',
     created_at datetime NOT NULL COMMENT 'Дата создания',
     created_by int NOT NULL COMMENT 'Пользователь создания',
-    company_inn varchar(255) default null,
-    company_ogrn varchar(255) default null,
+    company_inn varchar(12) default null,
+    company_ogrn varchar(15) default null,
     company_name text default null,
     company_fio text default null,
     company_car varchar(50) not null,
     legal_basement text default null,
     pass_number varchar(255) not null COMMENT 'Номер пропуска',
-    district varchar(255) not null COMMENT 'Наименование МО',
     pass_type int not null COMMENT 'Вид пропуска', -- Краснодар: 1 (желтый); Краснодарский край: 2 (красный)
+    district varchar(255) not null COMMENT 'Наименование МО',
     issued_at datetime DEFAULT NULL COMMENT 'Дата выдачи',
     registry_number varchar(100) DEFAULT NULL COMMENT 'Номер в реестре округа',
     shipping int not null COMMENT 'Способ направления заявителю', -- 1 - электронно, 2 - нарочно
@@ -81,7 +81,7 @@ CREATE TABLE bids (
     company_address text DEFAULT NULL COMMENT 'Адрес',
     company_ceo_phone text DEFAULT NULL COMMENT 'Телефон директора',
     company_ceo_email text DEFAULT NULL COMMENT 'E-mail директора',
-    company_ceo_name varchar(100) NOT NULL COMMENT 'ФИО директора',
+    company_ceo_name text NOT NULL COMMENT 'ФИО директора',
     agree smallint NOT NULL COMMENT 'Согласие обработки',
     confirm smallint NOT NULL COMMENT 'Подтверждение данных',
     workflow_status int DEFAULT NULL,
@@ -138,8 +138,8 @@ CREATE TABLE bids_people (
     company_id int NOT NULL COMMENT 'Компания',
     branch_id int DEFAULT NULL COMMENT 'Вид деятельности',
     company_branch text COMMENT 'Вид деятельности',
-    company_name varchar(512) NOT NULL COMMENT 'Название',
-    company_address varchar(512) DEFAULT NULL COMMENT 'Адрес',
+    company_name text NOT NULL COMMENT 'Название',
+    company_address text DEFAULT NULL COMMENT 'Адрес',
     company_ceo_phone text DEFAULT NULL COMMENT 'Телефон директора',
     company_ceo_email text DEFAULT NULL COMMENT 'E-mail директора',
     company_ceo_name text DEFAULT NULL COMMENT 'ФИО директора',
@@ -176,7 +176,7 @@ CREATE TABLE passes_people (
 -- заявки на пропуска сотрудников
 CREATE TABLE issued_people (
     id int NOT NULL COMMENT 'ID',
-    district_id int NOT NULL COMMENT 'Муниципальный округ',
+    district varchar(255) not null COMMENT 'Наименование МО',
     company_id int NOT NULL COMMENT 'Компания',
     lastname varchar(100) NOT NULL COMMENT 'Фамилия гражданина',
     firstname varchar(100) NOT NULL COMMENT 'Имя гражданина',
