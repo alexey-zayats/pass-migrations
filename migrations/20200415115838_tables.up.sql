@@ -111,7 +111,7 @@ CREATE TABLE passes (
     pass_number varchar(50) DEFAULT NULL COMMENT 'Номер пропуска',
     alighner_post varchar(50) DEFAULT NULL COMMENT 'Должность согласователя',
     alighner_name varchar(100) DEFAULT NULL COMMENT 'ФИО согласователя',
-    shiping int DEFAULT NULL COMMENT 'Способ направления',
+    shipping int DEFAULT NULL COMMENT 'Способ направления',
     status smallint NOT NULL COMMENT 'Статус',
     file_id int DEFAULT NULL COMMENT 'Файл загрузки',
     created_at datetime NOT NULL COMMENT 'Дата создания',
