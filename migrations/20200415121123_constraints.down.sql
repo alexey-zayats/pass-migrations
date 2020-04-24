@@ -76,6 +76,17 @@ ALTER TABLE companies_people DROP KEY idx_companies_people_name;
 ALTER TABLE companies_people MODIFY COLUMN id INT;
 ALTER TABLE companies_people DROP PRIMARY KEY;
 
+ALTER TABLE routing DROP FOREIGN KEY fk_source_id;
+ALTER TABLE routing DROP FOREIGN KEY fk_district_id;
+ALTER TABLE routing DROP FOREIGN KEY fk_clean_id;
+ALTER TABLE routing DROP FOREIGN KEY fk_dirty_id;
+ALTER TABLE routing DROP KEY idx_sources_districts;
+ALTER TABLE routing MODIFY COLUMN id INT;
+ALTER TABLE routing DROP PRIMARY KEY;
+
+ALTER TABLE sources DROP KEY sources_name_uniq;
+ALTER TABLE sources MODIFY COLUMN id INT;
+ALTER TABLE sources DROP PRIMARY KEY;
 
 -- districts
 ALTER TABLE districts MODIFY COLUMN id INT;
@@ -96,3 +107,4 @@ ALTER TABLE users DROP PRIMARY KEY;
 ALTER TABLE files DROP KEY idx_files_status;
 ALTER TABLE files MODIFY COLUMN id INT;
 ALTER TABLE files DROP PRIMARY KEY;
+

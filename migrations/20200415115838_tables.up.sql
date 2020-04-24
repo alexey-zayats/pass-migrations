@@ -1,3 +1,4 @@
+
 -- Округа
 CREATE TABLE districts (
     id int(11) NOT NULL COMMENT 'ID',
@@ -94,7 +95,17 @@ CREATE TABLE bids (
     source text,
     moved_to int DEFAULT NULL,
     alighned_id int DEFAULT NULL,
-    print_id int DEFAULT NULL
+    print_id int DEFAULT NULL,
+    city varchar(255) DEFAULT NULL,
+    who_address varchar(512) DEFAULT NULL,
+    phone_where varchar(255) DEFAULT NULL,
+    fio_where varchar(255) DEFAULT NULL,
+    city_where varchar(255) DEFAULT NULL,
+    address_where varchar(512) DEFAULT NULL,
+    `from` datetime DEFAULT NULL,
+    `to` datetime DEFAULT NULL,
+    reason text,
+    link varchar(512) DEFAULT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE passes (
@@ -192,3 +203,20 @@ CREATE TABLE issued_people (
     arm_number_by int DEFAULT NULL,
     arm_number_at datetime DEFAULT NULL
 ) ENGINE=InnoDB;
+
+
+-- данные для роутинга заявок
+CREATE TABLE sources (
+    id int(11) NOT NULL COMMENT 'ID',
+    name varchar(100) NOT NULL COMMENT 'Имя',
+    title varchar(255)  NOT NULL COMMENT 'Название'
+) ENGINE=InnoDB COMMENT='Источники данных';
+
+--
+CREATE TABLE routing (
+    id int NOT NULL COMMENT 'ID',
+    source_id int not null COMMENT 'ID источника данных',
+    district_id int not null COMMENT 'ID округа',
+    clean_id int not null COMMENT 'ID диспечера "чистых" данных',
+    dirty_id int not null COMMENT 'ID диспечера "грязных" данных'
+) ENGINE=InnoDB COMMENT='Диспетчеры данных';

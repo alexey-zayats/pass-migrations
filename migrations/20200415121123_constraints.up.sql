@@ -101,3 +101,14 @@ ALTER TABLE passes_people ADD KEY fk_passes_people_bid (bid_id);
 ALTER TABLE passes_people ADD KEY fk_passes_people_issued (issued_id);
 ALTER TABLE passes_people ADD CONSTRAINT fk_passes_people_bid FOREIGN KEY (bid_id) REFERENCES bids_people (id);
 ALTER TABLE passes_people ADD CONSTRAINT fk_passes_people_issued FOREIGN KEY (issued_id) REFERENCES issued_people (id);
+
+ALTER TABLE sources ADD PRIMARY KEY (id);
+ALTER TABLE sources MODIFY COLUMN id INT AUTO_INCREMENT;
+ALTER TABLE sources ADD UNIQUE KEY sources_name_uniq (name);
+
+ALTER TABLE routing ADD PRIMARY KEY (id);
+ALTER TABLE routing ADD CONSTRAINT fk_source_id FOREIGN KEY (source_id) REFERENCES sources (id);
+ALTER TABLE routing ADD CONSTRAINT fk_district_id FOREIGN KEY (district_id) REFERENCES districts (id);
+ALTER TABLE routing ADD CONSTRAINT fk_clean_id FOREIGN KEY (clean_id) REFERENCES users (id);
+ALTER TABLE routing ADD CONSTRAINT fk_dirty_id FOREIGN KEY (dirty_id) REFERENCES users (id);
+ALTER TABLE routing ADD KEY idx_sources_districts (source_id, district_id);

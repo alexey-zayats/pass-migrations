@@ -15,11 +15,10 @@ $ ./migrate.sh up
 
 Накатить миграции
 ```bash
-$ docker run --network host dockereg.athletic.cloud/pass-migrations -database 'mysql://pass:pass@tcp(192.168.1.36:3306)/pass?charset=utf8' up
--all
+$ docker run --network host aazayats/claim-migrations -database 'mysql://pass:pass@tcp(192.168.1.36:3306)/pass?charset=utf8' up
 ```
 
 Откатить миграции
 ```bash
-$ docker run --network host dockereg.athletic.cloud/pass-migrations -database 'mysql://pass:pass@tcp(192.168.1.36:3306)/pass?charset=utf8' down -all
+$ docker run --network host aazayats/claim-migrations -database 'mysql://pass:pass@tcp(192.168.1.36:3306)/pass?charset=utf8' down -all
 ```

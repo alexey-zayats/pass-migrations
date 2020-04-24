@@ -75,3 +75,15 @@ INSERT INTO companies VALUES
 
 INSERT INTO companies_people VALUES
 (1, 0, 0, "Компания без ИНН и ОГРН", 1, 0);
+
+INSERT INTO sources (id, name, title) VALUES
+(1, "excel", "Файл заявка Excel"),
+(2, "form-struct", "Formstruct письмо"),
+(3, "form-structdump", "Formstruct БД"),
+(4, "gsheet-vehicle", "Файл Google"),
+(5, "excel-registry", "Файл реестр Excel"),
+(6, "gsheet-people", "Файл Google людей"),
+(7, "form.vehicle", "Форма пропуска транспорта компании"),
+(8, "from.people", "Форма пропуска сотрудников компании"),
+(9, "form.single", "Форма пропуска ТС граждан")
+;
