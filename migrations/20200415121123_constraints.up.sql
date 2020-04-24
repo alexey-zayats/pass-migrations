@@ -107,6 +107,7 @@ ALTER TABLE sources MODIFY COLUMN id INT AUTO_INCREMENT;
 ALTER TABLE sources ADD UNIQUE KEY sources_name_uniq (name);
 
 ALTER TABLE routing ADD PRIMARY KEY (id);
+ALTER TABLE routing MODIFY COLUMN id INT AUTO_INCREMENT;
 ALTER TABLE routing ADD CONSTRAINT fk_source_id FOREIGN KEY (source_id) REFERENCES sources (id);
 ALTER TABLE routing ADD CONSTRAINT fk_district_id FOREIGN KEY (district_id) REFERENCES districts (id);
 ALTER TABLE routing ADD CONSTRAINT fk_clean_id FOREIGN KEY (clean_id) REFERENCES users (id);
