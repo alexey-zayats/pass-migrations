@@ -87,3 +87,14 @@ INSERT INTO sources (id, name, title) VALUES
 (8, "from.people", "Форма пропуска сотрудников компании"),
 (9, "form.single", "Форма пропуска ТС граждан")
 ;
+
+/*
+INSERT INTO routing (id, source_id, district_id, clean_id, dirty_id) VALUES
+(1, 4, 1, 1, 1),
+(2, 5, 1, 1, 1),
+(3, 6, 1, 1, 1),
+(4, 7, 1, 1, 1)
+;
+*/
+
+-- INSERT INTO routing (source_id, district_id, clean_id, dirty_id) VALUES (7, 10, 1, 1),

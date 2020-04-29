@@ -64,8 +64,8 @@ CREATE TABLE issued (
 -- Компании по пропускам для транспорта
 CREATE TABLE companies (
     id int NOT NULL,
-    ogrn bigint unsigned NOT NULL COMMENT 'ОГРН',
-    inn bigint unsigned NOT NULL COMMENT 'ИНН',
+    ogrn varchar(50) NOT NULL COMMENT 'ОГРН',
+    inn varchar(50) NOT NULL COMMENT 'ИНН',
     name varchar(512) NOT NULL COMMENT 'Название компании',
     branch_id int NOT NULL,
     status int NOT NULL DEFAULT '0'
@@ -102,8 +102,8 @@ CREATE TABLE bids (
     fio_where varchar(255) DEFAULT NULL,
     city_where varchar(255) DEFAULT NULL,
     address_where varchar(512) DEFAULT NULL,
-    `from` datetime DEFAULT NULL,
-    `to` datetime DEFAULT NULL,
+    `from` varchar(50) DEFAULT NULL,
+    `to` varchar(50) DEFAULT NULL,
     reason text,
     link varchar(512) DEFAULT NULL
 ) ENGINE=InnoDB;
@@ -135,8 +135,8 @@ CREATE TABLE passes (
 -- Компании по пропускам для сотрудников
 CREATE TABLE companies_people (
     id int NOT NULL,
-    ogrn bigint unsigned NOT NULL COMMENT 'ОГРН',
-    inn bigint unsigned NOT NULL COMMENT 'ИНН',
+    ogrn varchar(50) NOT NULL COMMENT 'ОГРН',
+    inn varchar(50) NOT NULL COMMENT 'ИНН',
     name varchar(512) NOT NULL COMMENT 'Название компании',
     branch_id int NOT NULL,
     status int NOT NULL DEFAULT '0'
